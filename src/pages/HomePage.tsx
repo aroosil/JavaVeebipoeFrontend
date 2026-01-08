@@ -54,7 +54,8 @@ function HomePage() {
   // TODO: promise handling? retry 3 times
   useEffect(() => {
     const productsPromise = DoGet(
-      `http://localhost:8080/products?categoryId=${activeCategory}&page=${pageInfo.page}&size=${pageInfo.size}&sort=${pageInfo.sortKey},${pageInfo.order}`,
+      import.meta.env.VITE_HOST_URL +
+        `/products?categoryId=${activeCategory}&page=${pageInfo.page}&size=${pageInfo.size}&sort=${pageInfo.sortKey},${pageInfo.order}`,
       3,
       setProducts,
       "GET PRODUCTS: "
@@ -72,7 +73,7 @@ function HomePage() {
 
   useEffect(() => {
     const categoryPromise = DoGet(
-      "http://localhost:8080/categories",
+      import.meta.env.VITE_HOST_URL + `/categories`,
       3,
       setCategories,
       "GET CATEGORIES: "

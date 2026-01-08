@@ -11,7 +11,7 @@ function ParcelMachines(props: ParcelMachineInterface) {
 
   useEffect(() => {
     DoGet(
-      "http://localhost:8080/parcel-machines",
+      import.meta.env.VITE_HOST_URL + `/parcel-machines`,
       1,
       setParcelMachines,
       "GET PARCEL MACHINES: "

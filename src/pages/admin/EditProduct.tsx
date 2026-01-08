@@ -19,7 +19,7 @@ function EditProduct() {
   // Reacti Hooki mõte on see, et teda luuakse täpselt 1x
   // ja kui re-renderdatakse (HTMLi uuendatakse), siis teda ei looda
   //   kui re-renderdatakse, siis kõik muu peale hookide käivitub
-  var defaultProduct = {
+  const defaultProduct = {
     name: "",
     price: 0,
     stock: 0,
@@ -42,7 +42,7 @@ function EditProduct() {
 
   useEffect(() => {
     DoGet(
-      "http://localhost:8080/products/" + product_id,
+      import.meta.env.VITE_HOST_URL + `/products/` + product_id,
       3,
       setProduct,
       "GET PRODUCT: "
@@ -52,7 +52,7 @@ function EditProduct() {
     });
 
     DoGet(
-      "http://localhost:8080/categories",
+      import.meta.env.VITE_HOST_URL + `/categories`,
       3,
       setCategories,
       "GET CATEGORIES: "
@@ -68,7 +68,7 @@ function EditProduct() {
       toast.error("Price needs to be > 0!");
       return;
     }
-    fetch("http://localhost:8080/products", {
+    fetch(import.meta.env.VITE_HOST_URL + `/products`, {
       method: "PUT",
       body: JSON.stringify(changedProduct),
       headers: {

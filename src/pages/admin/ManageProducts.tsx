@@ -10,11 +10,13 @@ function ManageProducts() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    DoGet("http://localhost:8080/admin-products", 3, setProducts);
+    DoGet(import.meta.env.VITE_HOST_URL + `/admin-products`, 3, setProducts);
   }, []);
 
   function deleteProduct(productId: number) {
-    fetch("http://localhost:8080/products/" + productId, { method: "DELETE" });
+    fetch(import.meta.env.VITE_HOST_URL + `/products/` + productId, {
+      method: "DELETE",
+    });
   }
 
   return (

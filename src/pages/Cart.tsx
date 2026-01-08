@@ -9,13 +9,16 @@ function Cart() {
   const [selectedPM, setSelectedPM] = useState("");
 
   function order() {
-    fetch(`http://localhost:8080/orders?personId=1&pmName=${selectedPM}`, {
-      method: "POST",
-      body: JSON.stringify(cart),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      import.meta.env.VITE_HOST_URL + `/orders?personId=1&pmName=${selectedPM}`,
+      {
+        method: "POST",
+        body: JSON.stringify(cart),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((json) => (window.location.href = json.link));
   }

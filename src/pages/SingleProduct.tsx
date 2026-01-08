@@ -9,7 +9,7 @@ function SingleProduct() {
 
   useEffect(() => {
     DoGet(
-      "http://localhost:8080/products/" + product_id,
+      import.meta.env.VITE_HOST_URL + `/products/` + product_id,
       3,
       setProduct,
       "GET PRODUCT: "

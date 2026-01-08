@@ -19,7 +19,7 @@ function AddProduct() {
 
   useEffect(() => {
     DoGet(
-      "http://localhost:8080/categories",
+      import.meta.env.VITE_HOST_URL + `/categories`,
       3,
       setCategories,
       "GET CATEGORIES: "
@@ -27,7 +27,7 @@ function AddProduct() {
   }, []);
 
   function addProduct() {
-    fetch("http://localhost:8080/products", {
+    fetch(import.meta.env.VITE_HOST_URL + `/products`, {
       method: "POST",
       body: JSON.stringify(product),
       headers: {

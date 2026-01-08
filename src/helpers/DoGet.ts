@@ -3,7 +3,7 @@
 export async function DoGet(
   address: string,
   retries: number,
-  setter: (arg: []) => void,
+  setter: (arg: any) => void,
   errorPrefix?: string
 ) {
   return fetch(address)

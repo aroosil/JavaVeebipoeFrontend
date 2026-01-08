@@ -9,7 +9,7 @@ function ManageCategories() {
 
   useEffect(() => {
     DoGet(
-      "http://localhost:8080/categories",
+      import.meta.env.VITE_HOST_URL + `/categories`,
       3,
       setCategories,
       "GET CATEGORIES: "
@@ -17,7 +17,7 @@ function ManageCategories() {
   }, []);
 
   function deleteCategory(categoryId: number) {
-    fetch("http://localhost:8080/categories/" + categoryId, {
+    fetch(import.meta.env.VITE_HOST_URL + `/categories/` + categoryId, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -34,7 +34,7 @@ function ManageCategories() {
   }
 
   function addCategory() {
-    fetch("http://localhost:8080/categories", {
+    fetch(import.meta.env.VITE_HOST_URL + `/categories`, {
       method: "POST",
       body: JSON.stringify(newCategory),
       headers: {
